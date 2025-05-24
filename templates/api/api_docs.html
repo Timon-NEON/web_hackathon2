@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}API Documentation - ALERTOS{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>API Documentation</h1>
+        <p>Integrate your systems with ALERTOS using our API</p>
+    </div>
+</section>
+
+<div class="container">
+    <section class="section">
+        <h2 class="section-title">API Overview</h2>
+        <div class="api-section">
+            <p>ALERTOS API allows security organizations to integrate their systems with our platform. You can get information about calls, update call statuses, and manage your profile.</p>
+            <p>All API requests must include your API key in the request header. Responses are returned in JSON format.</p>
+            
+            <h3>Base URL</h3>
+            <div class="code-block">
+                <code>https://api.alertos.com/v1</code>
+            </div>
+            
+            <h3>Authentication</h3>
+            <p>For authentication, use your API key in the Authorization header:</p>
+            <div class="code-block">
+                <code>Authorization: Bearer YOUR_API_KEY</code>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Endpoint Documentation</h2>
+        
+        <div class="api-section">
+            <h3>Get Calls List</h3>
+            <div class="code-block">
+                <code>GET /calls</code>
+            </div>
+            <p>Returns a list of active calls for your security organization.</p>
+            
+            <h4>Параметри запиту</h4>
+            <ul>
+                <li><strong>status</strong> (опціонально) - фільтр за статусом виклику (new, accepted, completed, cancelled)</li>
+                <li><strong>limit</strong> (опціонально) - кількість результатів на сторінці (за замовчуванням 10, максимум 100)</li>
+                <li><strong>offset</strong> (опціонально) - зміщення для пагінації</li>
+            </ul>
+            
+            <h4>Example Response</h4>
+            <div class="code-block">
+<pre>{
+  "calls": [
+    {
+      "id": "call_123456",
+      "user_id": "user_789",
+      "status": "new",
+      "location": {
+        "lat": 50.4501,
+        "lng": 30.5234
+      },
+      "address": "вул. Хрещатик, 1, Київ",
+      "created_at": "2023-06-01T14:30:00Z"
+    },
+    {
+      "id": "call_123457",
+      "user_id": "user_790",
+      "status": "accepted",
+      "location": {
+        "lat": 50.4520,
+        "lng": 30.5260
+      },
+      "address": "вул. Богдана Хмельницького, 10, Київ",
+      "created_at": "2023-06-01T14:35:00Z"
+    }
+  ],
+  "total": 2,
+  "limit": 10,
+  "offset": 0
+}</pre>
+            </div>
+        </div>
+        
+        <div class="api-section">
+            <h3>Оновлення статусу виклику</h3>
+            <div class="code-block">
+                <code>PUT /calls/{call_id}/status</code>
+            </div>
+            <p>Оновлює статус виклику.</p>
+            
+            <h4>Тіло запиту</h4>
+            <div class="code-block">
+<pre>{
+  "status": "accepted"
+}</pre>
+            </div>
+            
+            <h4>Можливі статуси</h4>
+            <ul>
+                <li><strong>accepted</strong> - виклик прийнято</li>
+                <li><strong>completed</strong> - виклик завершено</li>
+                <li><strong>cancelled</strong> - виклик скасовано</li>
+            </ul>
+            
+            <h4>Example Response</h4>
+            <div class="code-block">
+<pre>{
+  "id": "call_123456",
+  "status": "accepted",
+  "updated_at": "2023-06-01T14:40:00Z"
+}</pre>
+            </div>
+        </div>
+        
+        <div class="api-section">
+            <h3>Отримання інформації про користувача</h3>
+            <div class="code-block">
+                <code>GET /users/{user_id}</code>
+            </div>
+            <p>Повертає інформацію про користувача.</p>
+            
+            <h4>Example Response</h4>
+            <div class="code-block">
+<pre>{
+  "id": "user_789",
+  "name": "Іван Петренко",
+  "phone": "+380XXXXXXXXX",
+  "subscription_date": "2023-05-15T10:00:00Z",
+  "call_count": 3
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Помилки та коди відповідей</h2>
+        <div class="api-section">
+            <p>API використовує стандартні HTTP коди відповідей для індикації успіху або невдачі запиту.</p>
+            
+            <h3>Коди успішних відповідей</h3>
+            <ul>
+                <li><strong>200 OK</strong> - запит виконано успішно</li>
+                <li><strong>201 Created</strong> - ресурс успішно створено</li>
+                <li><strong>204 No Content</strong> - запит виконано успішно, але відповідь не містить тіла</li>
+            </ul>
+            
+            <h3>Коди помилок</h3>
+            <ul>
+                <li><strong>400 Bad Request</strong> - неправильний формат запиту</li>
+                <li><strong>401 Unauthorized</strong> - невірний API-ключ</li>
+                <li><strong>403 Forbidden</strong> - немає доступу до ресурсу</li>
+                <li><strong>404 Not Found</strong> - ресурс не знайдено</li>
+                <li><strong>429 Too Many Requests</strong> - перевищено ліміт запитів</li>
+                <li><strong>500 Internal Server Error</strong> - внутрішня помилка сервера</li>
+            </ul>
+            
+            <h3>Формат помилок</h3>
+            <div class="code-block">
+<pre>{
+  "error": {
+    "code": "invalid_request",
+    "message": "Неправильний формат запиту"
+  }
+}</pre>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

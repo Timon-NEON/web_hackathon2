@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Become a Partner - ALERTOS{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Become an ALERTOS Partner</h1>
+        <p>Expand your business and get new clients by joining our network of security organizations</p>
+    </div>
+</section>
+
+<div class="container">
+    <section class="section">
+        <h2 class="section-title">Partnership Benefits</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>New Clients</h3>
+                <p>Get access to new clients who previously did not use security organization services due to the complexity of contract procedures.</p>
+            </div>
+
+            <div class="card">
+                <h3>Easy Integration</h3>
+                <p>Our system easily integrates with your existing processes without significant IT infrastructure costs.</p>
+            </div>
+
+            <div class="card">
+                <h3>Service Expansion</h3>
+                <p>Add a new service to your portfolio - responding to private individual calls, which will increase your revenue.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Application Form</h2>
+        <div class="form-container">
+            <form method="post" action="{% url 'partner_form' %}">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}{% if field.field.required %} *{% endif %}
+                    </label>
+                    {{ field }}
+                    {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% if field.errors %}
+                    <div class="text-danger">
+                        {% for error in field.errors %}
+                        <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                
+                <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
+            </form>
+        </div>
+    </section>
+</div>
+{% endblock %}

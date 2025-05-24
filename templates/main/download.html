@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ALERTOS - Download App{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Download ALERTOS App</h1>
+        <p>Download our mobile app and get instant access to security services directly from your device.</p>
+    </div>
+</section>
+
+<div class="container">
+    <section class="section">
+        <h2 class="section-title">How to Download the App</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Step 1: Download APK File</h3>
+                <p>Click the button below to download the latest version of our app:</p>
+                <div class="download-button-container">
+                    <a href="/media/alertos.apk" download class="download-button">Download APK</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Step 2: Configure Security Settings</h3>
+                <p>Before installing the app from APK file, you need to allow installation of apps from unknown sources:</p>
+                <ol>
+                    <li>Open your device Settings</li>
+                    <li>Go to "Security" or "Privacy" section</li>
+                    <li>Find the "Unknown sources" or "Install from unknown sources" option and enable it</li>
+                    <li>Confirm the permission if a warning appears</li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h3>Step 3: Install the App</h3>
+                <p>After downloading the APK file:</p>
+                <ol>
+                    <li>Open file manager on your device</li>
+                    <li>Go to "Downloads" folder</li>
+                    <li>Find and tap on ALERTOS.apk file</li>
+                    <li>Tap "Install" and wait for installation to complete</li>
+                    <li>After installation, tap "Open" or find ALERTOS icon on home screen</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">System Requirements</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Android</h3>
+                <ul>
+                    <li>Android 6.0 (Marshmallow) or newer</li>
+                    <li>Minimum 30 MB free space</li>
+                    <li>Internet access</li>
+                    <li>Geolocation access for precise location determination</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Security Recommendations</h3>
+                <ul>
+                    <li>Always download the app only from the official ALERTOS website</li>
+                    <li>After installing the app, we recommend disabling the "Install from unknown sources" option</li>
+                    <li>Regularly update the app to get new features and security fixes</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .download-button-container {
+        text-align: center;
+        margin: 20px 0;
+    }
+    
+    .download-button {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        background-color: #0056b3;
+        color: white;
+        border-radius: 6px;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .download-button:hover {
+        background-color: #003d82;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .download-button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+</style>
+{% endblock %}

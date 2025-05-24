@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ALERTOS - Завантажити додаток{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Завантажити додаток ALERTOS</h1>
+        <p>Завантажте наш мобільний додаток та отримайте моментальний доступ до охоронних сервісів безпосередньо з вашого пристрою.</p>
+    </div>
+</section>
+
+<div class="container">
+    <section class="section">
+        <h2 class="section-title">Як завантажити додаток</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Крок 1: Завантажте APK файл</h3>
+                <p>Натисніть на кнопку нижче, щоб завантажити останню версію нашого додатку:</p>
+                <div class="download-button-container">
+                    <a href="#" class="nav-button primary download-button">Завантажити APK</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Крок 2: Налаштуйте параметри безпеки</h3>
+                <p>Перед встановленням додатку з APK-файлу, необхідно дозволити встановлення додатків з невідомих джерел:</p>
+                <ol>
+                    <li>Відкрийте Налаштування вашого пристрою</li>
+                    <li>Перейдіть до розділу "Безпека" або "Приватність"</li>
+                    <li>Знайдіть опцію "Невідомі джерела" або "Встановлення з невідомих джерел" та увімкніть її</li>
+                    <li>Підтвердіть дозвіл, якщо з'явиться попередження</li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h3>Крок 3: Встановіть додаток</h3>
+                <p>Після завантаження APK-файлу:</p>
+                <ol>
+                    <li>Відкрийте файловий менеджер на вашому пристрої</li>
+                    <li>Перейдіть до папки "Завантаження" або "Downloads"</li>
+                    <li>Знайдіть та натисніть на файл ALERTOS.apk</li>
+                    <li>Натисніть "Встановити" та дочекайтесь завершення встановлення</li>
+                    <li>Після встановлення натисніть "Відкрити" або знайдіть іконку ALERTOS на головному екрані</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Вимоги до системи</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Android</h3>
+                <ul>
+                    <li>Android 6.0 (Marshmallow) або новіше</li>
+                    <li>Мінімум 100 МБ вільного місця</li>
+                    <li>Доступ до інтернету</li>
+                    <li>Доступ до геолокації для точного визначення вашого місцезнаходження</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Рекомендації з безпеки</h3>
+                <ul>
+                    <li>Завжди завантажуйте додаток тільки з офіційного сайту ALERTOS</li>
+                    <li>Після встановлення додатку рекомендуємо вимкнути опцію "Встановлення з невідомих джерел"</li>
+                    <li>Регулярно оновлюйте додаток для отримання нових функцій та виправлень безпеки</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .download-button-container {
+        text-align: center;
+        margin: 20px 0;
+    }
+    
+    .download-button {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+    }
+</style>
+{% endblock %}

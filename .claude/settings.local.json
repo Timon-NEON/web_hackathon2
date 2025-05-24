@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(python manage.py collectstatic:*)",
+      "Bash(python3 manage.py collectstatic:*)",
+      "Bash(source:*)",
+      "Bash(.venv/Scripts/activate:*)",
+      "Bash(python3:*)",
+      "Bash(pip install:*)",
+      "Bash(pip3 install:*)"
+    ],
+    "deny": []
+  }
+}

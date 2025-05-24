@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Application Sent - ALERTOS{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Thank you for your application!</h1>
+        <p>We have received your partnership application</p>
+    </div>
+</section>
+
+<div class="container">
+    <section class="section">
+        <div class="form-container">
+            <div class="success-message">
+                <h2>Thank you for submitting a partnership request. Please wait for further instructions</h2>
+                <p>Our team will review your application within 2-3 business days and contact you to discuss cooperation details.</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="{% url 'home' %}" class="btn btn-primary">Return to Home</a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
